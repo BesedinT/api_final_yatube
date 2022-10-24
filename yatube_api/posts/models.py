@@ -28,6 +28,9 @@ class Post(models.Model):
     def __str__(self):
         return self.text[:15]
 
+    class Meta:
+        ordering = ('id',)
+
 
 class Comment(models.Model):
     author = models.ForeignKey(
@@ -55,7 +58,11 @@ class Follow(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['user', 'following'],
-                                    name='unique_user_subscribers')
+                                    name='unique_user_subscribers'),
+            models.CheckConstraint(
+                name='revent_self_follow',
+                check=~models.Q(user=models.F('following')),
+            ),
         ]
 
     def __str__(self):

@@ -21,4 +21,8 @@ source env/bin/activate
 Запустить проект: python manage.py runserver
 
 После запуска проекта, документация будет доступна по адресу:
-http://localhost:port/redoc/
+http://127.0.0.1:8000/redoc/
+
+Автор: Анатолий Беседин
+email: besedin.tolik777@yandex
+https://github.com/BesedinT
